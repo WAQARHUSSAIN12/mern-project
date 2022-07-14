@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start":"node index.js",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install && cd client && npm install && cd ../ && cd server && npm install" 
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && run build --prefix" 
 
   },
   "author": "",
@@ -24,7 +24,7 @@
     "passport": "^0.6.0",
     "passport-local": "^1.0.0"
   },
-  "engines" : {
-    "node" : "16.0.0"
+   "engines" : { 
+    "node" : "16.14.2"
   }
 }
