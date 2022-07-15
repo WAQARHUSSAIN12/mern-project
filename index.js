@@ -32,8 +32,11 @@ app.use("/", require("./routes/Routes"));
 
 const PORT = process.env.PORT || 4111;
 
-if(process.env.NODE_ENV == "production"){
+if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "staging") {
     app.use(express.static("client/build"));
+    app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname + "/client/build/index.html"));
+    });
 }
 
 app.listen(PORT, console.log("Server has st arted at port " + PORT));
