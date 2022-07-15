@@ -36,7 +36,7 @@ export default function Product() {
         getAllProducts();
     }, []);
     const getAllProducts = () => {
-        axios.get(`http://localhost:4111/getProducts`)
+        axios.get(`https://mern-project-eshop.herokuapp.com/getProducts`)
             .then(res => {
                 const products = res.data;
                 getProducts(products)
@@ -56,7 +56,7 @@ export default function Product() {
         }
         axios({
           method: 'post',
-          url: 'http://localhost:4111/addToCart',
+          url: 'https://mern-project-eshop.herokuapp.com/addToCart',
           data: productData,
         })
           .then(res => {
@@ -175,8 +175,8 @@ export default function Product() {
                                             <div className="single-product">
                                                 <div className="product-img">
                                                     <a href="product-details.html">
-                                                        <img className="default-img" style={{width: "200px", height:"300px", minHeight:"300px" }} src={`http://localhost:4111/public/${product.photoUrl}`} alt="#" />
-                                                        <img className="hover-img"   style={{width: "200px", height:"300px", minHeight:"300px"}} src={`http://localhost:4111/public/${product.photoUrl}`} alt="#" />
+                                                        <img className="default-img" style={{width: "200px", height:"300px", minHeight:"300px" }} src={`https://mern-project-eshop.herokuapp.com/public/${product.photoUrl}`} alt="#" />
+                                                        <img className="hover-img"   style={{width: "200px", height:"300px", minHeight:"300px"}} src={`https://mern-project-eshop.herokuapp.com//public/${product.photoUrl}`} alt="#" />
                                                     </a>
                                                     <div className="button-head">
                                                         <div className="product-action">
