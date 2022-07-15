@@ -30,10 +30,8 @@ export default function Login() {
            // localStorage.setItem('name',res.data[0].name);
             isLoggedIn =  localStorage.getItem("LoginToken"); 
             if (isLoggedIn) {
-                 
-               { window.location.replace("http://localhost:3000/admin/dashboard") }
+               { window.location.replace("https://mern-project-eshop.herokuapp.com/admin/dashboard") }
                 //navigate("/admin/dashboard");
-              
             }
         }else{
           Swal.fire(
