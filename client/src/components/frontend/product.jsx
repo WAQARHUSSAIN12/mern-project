@@ -176,7 +176,7 @@ export default function Product() {
                                                 <div className="product-img">
                                                     <a href="product-details.html">
                                                         <img className="default-img" style={{width: "200px", height:"300px", minHeight:"300px" }} src={`https://mern-project-eshop.herokuapp.com/public/${product.photoUrl}`} alt="#" />
-                                                        <img className="hover-img"   style={{width: "200px", height:"300px", minHeight:"300px"}} src={`https://mern-project-eshop.herokuapp.com//public/${product.photoUrl}`} alt="#" />
+                                                        <img className="hover-img"   style={{width: "200px", height:"300px", minHeight:"300px"}} src={`https://mern-project-eshop.herokuapp.com/public/${product.photoUrl}`} alt="#" />
                                                     </a>
                                                     <div className="button-head">
                                                         <div className="product-action">
