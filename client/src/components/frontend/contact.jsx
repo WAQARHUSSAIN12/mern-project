@@ -76,31 +76,31 @@ return (
                   <div className="col-lg-6 col-12">
                     <div className="form-group">
                       <label>Your Name<span>*</span></label>
-                      <input name="name" onChange={e => setName(e.target.value)} type="text" placeholder />
+                      <input name="name" onChange={e => setName(e.target.value)} type="text"  placeholder required />
                     </div>
                   </div>
                   <div className="col-lg-6 col-12">
                     <div className="form-group">
                       <label>Your Subjects<span>*</span></label>
-                      <input name="subject" onChange={e => setSubject(e.target.value)} type="text" placeholder />
+                      <input name="subject" onChange={e => setSubject(e.target.value)} type="text" placeholder required />
                     </div>
                   </div>
                   <div className="col-lg-6 col-12">
                     <div className="form-group">
                       <label>Your Email<span>*</span></label>
-                      <input name="email" type="email" onChange={e => setEmail(e.target.value)}  placeholder />
+                      <input name="email" type="email" onChange={e => setEmail(e.target.value)}  placeholder required />
                     </div>	
                   </div>
                   <div className="col-lg-6 col-12">
                     <div className="form-group">
                       <label>Your Phone<span>*</span></label>
-                      <input name="phone" type="text" onChange={e => setPhone(e.target.value)}  placeholder />
+                      <input name="phone" type="text" onChange={e => setPhone(e.target.value)}  placeholder required />
                     </div>	
                   </div>
                   <div className="col-12">
                     <div className="form-group message">
                       <label>your message<span>*</span></label>
-                      <textarea name="message" onChange={e => setMessage(e.target.value)}   placeholder defaultValue={""} />
+                      <textarea name="message" onChange={e => setMessage(e.target.value)}   placeholder required defaultValue={""} />
                     </div>
                   </div>
                   <div className="col-12">
