@@ -10,7 +10,7 @@ const  [totalAmout,gettotalAmount] = useState([]);
     },[]);
 
   const getAllCartItems = () => {
-      axios.get(`http://localhost:4111/getAllCartItems`)
+      axios.get(`https://mern-project-eshop.herokuapp.com/getAllCartItems`)
       .then(res => {
         const cartItems = res.data;
         getcartItems(cartItems)
@@ -93,7 +93,7 @@ return (
                             cartItems.map((product,i) =>
                                 <li>
                                     <a className="cart-img" href="#">
-                                        <img style={{width: "70px", height:"70px", minHeight:"70px" }} src={`http://localhost:4111/public/${product.product[0].photoUrl}`} alt="#" />
+                                        <img style={{width: "70px", height:"70px", minHeight:"70px" }} src={`https://mern-project-eshop.herokuapp.com/public/${product.product[0].photoUrl}`} alt="#" />
                                     </a>
                                     <h4>
                                         <a href="#">{ product.product[0].name}</a>

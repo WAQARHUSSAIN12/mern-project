@@ -28,7 +28,7 @@ export default function ProductForm() {
 
     axios({
       method:'post',
-      url: 'http://localhost:4111/createProduct',
+      url: 'https://mern-project-eshop.herokuapp.com/createProduct',
       data: product,
     })
       .then(res=>{
@@ -51,7 +51,7 @@ export default function ProductForm() {
   },[]);
 
   const getAllCategories = () => {
-      axios.get(`http://localhost:4111/getCategories`)
+      axios.get(`https://mern-project-eshop.herokuapp.com/getCategories`)
       .then(res => {
         const categories = res.data;
         getCategories(categories)

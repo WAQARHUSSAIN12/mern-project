@@ -12,7 +12,7 @@ export default function ListUsers() {
   },[]);
 
   const getAllUsers = () => {
-      axios.get(`http://localhost:4111/getUsers`)
+      axios.get(`https://mern-project-eshop.herokuapp.com/getUsers`)
       .then(res => {
         const users = res.data;
         getUsers(users)
@@ -47,7 +47,7 @@ const userData = {
 
 axios({
   method: 'post',
-  url: 'http://localhost:4111/deleteUser',
+  url: 'https://mern-project-eshop.herokuapp.com/deleteUser',
   data: userData,
 })
   .then(res => {

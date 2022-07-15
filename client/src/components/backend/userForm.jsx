@@ -21,10 +21,10 @@ export default function UserForm() {
       password:password
     }
     //alert(user.name + " " + user.email + " " + user.address + " " + user.devliveryAddress + " " + user.userType + " " + password);
-    //axios.get('http://localhost:4111/createCategory', 
+    //axios.get('https://mern-project-eshop.herokuapp.com/createCategory', 
     axios({
       method:'post',
-      url: 'http://localhost:4111/createUser',
+      url: 'https://mern-project-eshop.herokuapp.com/createUser',
       data: user,
     })
       .then(res=>{

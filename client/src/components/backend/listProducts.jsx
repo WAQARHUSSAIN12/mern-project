@@ -9,7 +9,7 @@ export default function ListProducts() {
   },[]);
 
   const getAllProducts = () => {
-      axios.get(`http://localhost:4111/getProducts`)
+      axios.get(`https://mern-project-eshop.herokuapp.com/getProducts`)
       .then(res => {
         const products = res.data;
         getProducts(products)
@@ -45,7 +45,7 @@ const productData = {
 
 axios({
   method: 'post',
-  url: 'http://localhost:4111/deleteProduct',
+  url: 'https://mern-project-eshop.herokuapp.com/deleteProduct',
   data: productData,
 })
   .then(res => {

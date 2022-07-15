@@ -20,7 +20,7 @@ const getUserById = () => {
     }
     axios({
       method: 'post',
-      url: 'http://localhost:4111/getUser',
+      url: 'https://mern-project-eshop.herokuapp.com/getUser',
       data: userData,
     })
       .then(res => {
@@ -46,7 +46,7 @@ id,id
 }
 axios({
 method:'post',
-url: 'http://localhost:4111/updateUser',
+url: 'https://mern-project-eshop.herokuapp.com/updateUser',
 data: user,
 })
 .then(res=>{

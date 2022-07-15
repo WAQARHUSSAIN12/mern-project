@@ -27,8 +27,8 @@ app.use(session({
     saveUninitialized: true,
     resave: true
 }));
-app.use("/", require("./routes/Routes"));
 
+app.use("/", require("./routes/Routes"));
 
 const PORT = process.env.PORT || 4111;
 

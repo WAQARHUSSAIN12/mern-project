@@ -14,7 +14,7 @@ const navigate = useNavigate();
 
 // GET ALL CART ITEM REQUEST 
 const getAllCartItems = () => {
-      axios.get(`http://localhost:4111/getAllCartItems`)
+      axios.get(`https://mern-project-eshop.herokuapp.com/getAllCartItems`)
       .then(res => {
         const cartItems = res.data;
         getcartItems(cartItems)
@@ -32,7 +32,7 @@ const removeItem = (e) =>{
 
       axios({
         method: 'post',
-        url: 'http://localhost:4111/removeCartItem',
+        url: 'https://mern-project-eshop.herokuapp.com/removeCartItem',
         data: cartData,
       })
         .then(res => {
@@ -87,7 +87,7 @@ return (
              cartItems.map((product,i) =>
               <tr>
                 <td className="image" data-title="No">
-                    <img style={{width: "100px", height:"100px", minHeight:"100px" }} src={`http://localhost:4111/public/${product.product[0].photoUrl}`} alt="#" />
+                    <img style={{width: "100px", height:"100px", minHeight:"100px" }} src={`https://mern-project-eshop.herokuapp.com/public/${product.product[0].photoUrl}`} alt="#" />
                 </td>
                 <td className="product-des" data-title="Description">
                   <p className="product-name"><a href="#">{ product.product[0].name} </a></p>

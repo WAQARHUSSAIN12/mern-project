@@ -20,7 +20,7 @@ export default function Login() {
 
         axios({
             method:'post',
-            url: 'http://localhost:4111/login',
+            url: 'https://mern-project-eshop.herokuapp.com/login',
             data: user,
         })
         .then(res=>{

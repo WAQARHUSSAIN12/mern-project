@@ -12,10 +12,10 @@ const [name, setName] = useState();
     const user = {
       name: name
     }
-    //axios.get('http://localhost:4111/createCategory', 
+    //axios.get('https://mern-project-eshop.herokuapp.com/createCategory', 
     axios({
       method:'post',
-      url: 'http://localhost:4111/createCategory',
+      url: 'https://mern-project-eshop.herokuapp.com/createCategory',
       data: user,
     })
     .then(res=>{

@@ -17,7 +17,7 @@ const getCategoryById = () => {
     }
     axios({
       method: 'post',
-      url: 'http://localhost:4111/getCategory',
+      url: 'https://mern-project-eshop.herokuapp.com/getCategory',
       data: cateData,
     })
       .then(res => {
@@ -37,7 +37,7 @@ const getCategoryById = () => {
     }
     axios({
       method: 'post',
-      url: 'http://localhost:4111/updateCategory',
+      url: 'https://mern-project-eshop.herokuapp.com/updateCategory',
       data: category,
     })
       .then(res => {

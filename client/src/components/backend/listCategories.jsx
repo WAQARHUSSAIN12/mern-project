@@ -14,7 +14,7 @@ export default function ListCategories(){
 
 // GET ALL CATEGORIES REQUEST
   const getAllCategories = () => {
-      axios.get(`http://localhost:4111/getCategories`)
+      axios.get(`https://mern-project-eshop.herokuapp.com/getCategories`)
       .then(res => {
         const categories = res.data;
         getCategories(categories)
@@ -49,7 +49,7 @@ const deleteById = (id) => {
 
     axios({
       method: 'post',
-      url: 'http://localhost:4111/deleteCategory',
+      url: 'https://mern-project-eshop.herokuapp.com/deleteCategory',
       data: cateData,
     })
       .then(res => {
