@@ -2,11 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 let OrderItemSchema = new Schema({
     quantity: {
-        type: String,
+        type: Number,
         required: true,
-        unique: true
     },
-    price: {
+    unitPrice: {
         type: Number,
         required: true
     },

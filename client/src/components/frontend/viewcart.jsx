@@ -6,7 +6,8 @@ const Swal = require('sweetalert2');
 
 export default function Viewcart() {
 const  [cartItems,getcartItems] = useState([]);
-const  [totalAmout,settotalAmount] = useState([]);
+// const  [totalAmout,settotalAmount] = useState([]);
+var totalAmount = 0;
 const navigate = useNavigate();
     useEffect(()=>{
         getAllCartItems();
@@ -47,6 +48,52 @@ const removeItem = (e) =>{
         })
 }
 
+  const [customerName, setcustomerName] = useState();
+  const [customerEmail, setcustomerEmail] = useState();
+  const [customerContact, setcustomerContact] = useState();
+  const [customerPostCode, setcustomerPostCode] = useState();
+  const [devliveryAddress, setdevliveryAddress] = useState();
+  const [customerInstruction, setcustomerInstruction] = useState();
+  const [customerToken, setcustomerToken] = useState();
+
+function handleSubmit(event) {
+
+  event.preventDefault();
+  const order = new FormData();
+  order.append('customerName',  customerName);
+  order.append('customerEmail',  customerEmail);
+  order.append('customerContact',  customerContact);
+  order.append('customerPostCode',  customerPostCode);
+  order.append('devliveryAddress',  devliveryAddress);
+  order.append('customerInstruction',  customerInstruction);
+  order.append('customerToken',localStorage.getItem("ClintToken"));
+
+  // alert(order.productName + " " + order.productDesc + " " + order.qty + " " + order.price + " " + order.category);
+  console.log(order);
+  for (var key of order.entries()) {
+    console.log(key[0] + ', ' + key[1]);
+  }
+
+  axios({
+    method:'post',
+    url: 'https://mern-project-eshop.herokuapp.com/createOrder',
+    data: order,
+  })
+    .then(res=>{
+      if(res.data.message){
+        Swal.fire(
+          'Thank You',
+          'Your order has been placed successfully we will contact you soon for confirmation' ,
+          'success'
+        );
+            setTimeout(function(){
+              window.location.href = 'https://mern-project-eshop.herokuapp.com';
+           }, 3000);
+      }
+      //window.location = "/listCategories" //This line of code will redirect you once the submission is succeed
+    })
+}
+
 return (
 <>
 <div>
@@ -84,7 +131,10 @@ return (
             </thead>
             <tbody>
             {
-             cartItems.map((product,i) =>
+             cartItems.map((product,i) => 
+             {
+              totalAmount +=product.UnitPrice;
+              return( 
               <tr>
                 <td className="image" data-title="No">
                     <img style={{width: "100px", height:"100px", minHeight:"100px" }} src={`https://mern-project-eshop.herokuapp.com/public/${product.product[0].photoUrl}`} alt="#" />
@@ -101,7 +151,9 @@ return (
                     </button>
                 </td>
               </tr>
-            )
+              )
+              }
+             )
             }
             </tbody>
           </table>
@@ -124,17 +176,18 @@ return (
                 </div>
               </div>
               <div className="col-lg-4 col-md-7 col-12">
-                <div className="right">
+
+                {totalAmount != 0 ?  <div className="right">
                   <ul>
-                    <li>Cart Subtotal<span>$330.00</span></li>
+                    <li>Cart Subtotal<span>PKR {totalAmount}</span></li>
                     <li>Shipping<span>Free</span></li>
-                    <li className="last">You Pay<span>$310.00</span></li>
+                    <li className="last">You Pay<span>PKR {totalAmount}</span></li>
                   </ul>
                   <div className="button5">
-                    <a href="#" className="btn">checkout cash on delivery </a>
-                    <NavLink to="/" > Continue shopping </NavLink>
+                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#" className="btn">checkout cash on delivery </a>
+                    <NavLink to="/"  className="btn" >Continue shopping </NavLink>
                   </div>
-                </div>
+                </div>: null  }
               </div>
             </div>
           </div>
@@ -144,6 +197,81 @@ return (
     </div>
   </div>
   {/*/ End Shopping Cart */}
+
+  {/* Modal */}
+    <div className="modal fade" id="exampleModal" tabIndex={-1} role="dialog">
+      <div className="modal-dialog" role="document">
+          <div className="modal-content">
+              <div className="modal-header">
+                  <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span className="ti-close" aria-hidden="true" /></button>
+              </div>
+              <div className="modal-body">
+              <section id="contact-us" className="contact-us section">
+                  <div className="container">
+                    <div className="contact-head">
+                      <div className="row">
+                        <div className="col-lg-12 col-12">
+                          <div className="form-main">
+                            <div className="title">
+                              <h4>Checkout form</h4>
+                              <h3>Please fill below detail for checkout/place your order</h3>
+                            </div>
+                            <form className="form"  onSubmit = { handleSubmit }  encType="multipart/form-data" >
+                              <div className="row">
+                                <div className="col-lg-4 col-12">
+                                  <div className="form-group">
+                                    <label>Your Name<span>*</span></label>
+                                    <input name="customerName" onChange={e => setcustomerName(e.target.value)}  type="text" placeholder />
+                                  </div>
+                                </div>
+                                <div className="col-lg-4 col-12">
+                                  <div className="form-group">
+                                    <label>Your Email<span>*</span></label>
+                                    <input name="customerEmail" onChange={e => setcustomerEmail(e.target.value)}  type="email" placeholder />
+                                  </div>
+                                </div>
+                                <div className="col-lg-4 col-12">
+                                  <div className="form-group">
+                                    <label>Your Contact<span>*</span></label>
+                                    <input name="customerContact" onChange={e => setcustomerContact(e.target.value)} type="phone"    placeholder />
+                                  </div>	
+                                </div>
+                                <div className="col-lg-4 col-12">
+                                  <div className="form-group">
+                                    <label>Postal Code<span>*</span></label>
+                                    <input name="customerPostCode" onChange={e => setcustomerPostCode(e.target.value)} type="text"   placeholder />
+                                  </div>	
+                                </div>
+                                <div className="col-lg-4 col-12">
+                                    <div className="form-group">
+                                      <label>Delivery Address <span>*</span></label>
+                                      <input name="devliveryAddress" onChange={e => setdevliveryAddress(e.target.value)} type="text" placeholder />
+                                    </div>	
+                                </div>
+                                <div className="col-lg-4 col-12">
+                                    <div className="form-group">
+                                      <label>Message/Instruction <span>*</span></label>
+                                      <input name="customerInstruction" onChange={e => setcustomerInstruction(e.target.value)} type="text" placeholder />
+                                    </div>	
+                                </div>
+                                <div className="col-lg-12 col-12">
+                                  <div className="form-group button">
+                                    <button type="submit" className="btn ">Checkout</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+          </div>
+      </div>
+    </div>
+  {/* Modal */} 
 </div>
 </>
 )

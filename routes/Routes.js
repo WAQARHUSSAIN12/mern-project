@@ -28,12 +28,12 @@ const {
   insertMessage,
 } = require("../controllers/UserController");
 
-
-
 const {
   addToCart,
   getAllCartItems,
   removeCartItem,
+  createOrder,
+  
 } = require("../controllers/CartController");
 
 const router = express.Router();
@@ -66,5 +66,7 @@ router.post("/insertMessage", insertMessage);
 router.post("/addToCart", addToCart);
 router.get("/getAllCartItems", getAllCartItems);
 router.post("/removeCartItem", removeCartItem);
+ 
+router.post("/createOrder",type, createOrder);
  
 module.exports = router;

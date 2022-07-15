@@ -196,19 +196,6 @@ export default function Product() {
                                                 </div>
                                             </div>
                                         </div>
-                                // <tr key={product.id}>
-                                // <td> { ++i }</td>
-                                // <td>{product.name}</td>
-                                // <td>{product.desc}</td>
-                                // <td>{product.qty}</td>
-                                // <td>{product.Price}</td>
-                                // <td>{product.category ? product.category[0].name : "" }</td>
-                                // <td>{product.createdDate}</td>
-                                // <td>
-                                //     <NavLink to={`/admin/proedit/${product._id}`} className="btn btn-primary"> UPDATE </NavLink> 
-                                //     <button value={product._id} onClick={deleteProduct}  className="btn btn-danger"> DELETE </button> 
-                                // </td>
-                                // </tr>  
                                 )
                             }
 
